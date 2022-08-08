@@ -17,8 +17,8 @@ connect_db()
 
 app.set("view engine", "hbs");
 
-app.get('/form', (req, res) => {
-    res.render('index')
+app.get('/', (req, res) => {
+    res.sendStatus(200)
 })
 
 app.get('/getData', async (req, res) => {
