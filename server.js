@@ -34,7 +34,7 @@ app.get('/getData', async (req, res) => {
 })
 
 app.get('/deleteData', async (req, res) => {
-    await Products.remove()
+    await Products.deleteMany()
     .then(() => {
         res.sendStatus(200)
     })
