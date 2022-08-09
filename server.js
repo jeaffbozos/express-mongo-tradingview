@@ -26,10 +26,10 @@ app.get('/getData', async (req, res) => {
     .then(products=>{
         res.json(products)
     })
-
+    /*
     await Products.remove().then(() => {
         console.log("Data deleted")
-    })
+    }) */
     
 })
 
