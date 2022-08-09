@@ -33,6 +33,14 @@ app.get('/getData', async (req, res) => {
     
 })
 
+app.get('/deleteData', async (req, res) => {
+    await Products.remove()
+    .then(() => {
+        res.sendStatus(200)
+    })
+    
+})
+
 
 app.post('/postData', async (req, res) => {
     const ticker = req.body.ticker
