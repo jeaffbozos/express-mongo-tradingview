@@ -15,6 +15,6 @@ imageURL:{
 
 })
 
-const Products = mongoose.model('Reveal', RevealSchema);
+const Reveals = mongoose.model('Reveal', RevealSchema);
 
 module.exports = Reveals;
