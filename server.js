@@ -6,6 +6,7 @@ var fs = require('fs')
 const { promisify } = require('util')
 const connect_db = require('./connect_db')
 const Products = require('./models/Products')
+const Reveals = require('./models/Reveals')
 
 const readFileAsync = promisify(fs.readFile)
 const writeFileAsync = promisify(fs.writeFile)
@@ -76,8 +77,8 @@ app.post('/revealData', async (req, res) => {
 
 app.get('/fetchReveal', async (req, res) => {
     await Reveals.find()
-    .then(revealz=>{
-        res.json(revealz)
+    .then(reveal=>{
+        res.json(reveal)
     })
     /*
     await Products.remove().then(() => {
