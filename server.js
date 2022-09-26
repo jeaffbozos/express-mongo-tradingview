@@ -72,6 +72,7 @@ app.post('/revealData', async (req, res) => {
     })
     await reveal.save()
     res.sendStatus(200)
+    console.log('hi')
     
   });
 
