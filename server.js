@@ -59,6 +59,33 @@ app.post('/postData', async (req, res) => {
     
   });
 
+app.post('/revealData', async (req, res) => {
+    const mint = req.body.mint
+    const price = req.body.price
+    const image = req.body.imageURL
+
+    const reveal = new Reveals({
+        "mint":mint,
+        "price":price,
+        "imageURL":image,
+    })
+    await reveal.save()
+    res.sendStatus(200)
+    
+  });
+
+app.get('/fetchReveal', async (req, res) => {
+    await Reveals.find()
+    .then(revealz=>{
+        res.json(revealz)
+    })
+    /*
+    await Products.remove().then(() => {
+        console.log("Data deleted")
+    }) */
+    
+})
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log('Server is running on port 5000')
