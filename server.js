@@ -64,15 +64,16 @@ app.post('/revealData', async (req, res) => {
     const mint = req.body.mint
     const price = req.body.price
     const image = req.body.imageURL
+    const attributes = req.body.attributes
 
     const reveal = new Reveals({
         "mint":mint,
         "price":price,
         "imageURL":image,
+        "attributes":attributes,
     })
     await reveal.save()
     res.sendStatus(200)
-    console.log('hi')
     
   });
 
