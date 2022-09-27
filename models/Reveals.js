@@ -11,6 +11,9 @@ price: {
 },
 imageURL:{
     type: String,
+},
+attributes:{
+    type: String
 }
 
 })
