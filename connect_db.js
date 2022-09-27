@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
  function connect (){
 
-    const uri = 'mongodb+srv://jeaff:uFmPbInum93Pdh75@cluster0.mg3i8.mongodb.net/?retryWrites=true&w=majority'
+    /* const uri = 'mongodb+srv://jeaff:uFmPbInum93Pdh75@cluster0.mg3i8.mongodb.net/?retryWrites=true&w=majority'
     try{
          mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true })
         const connection = mongoose.connection;
@@ -13,4 +13,4 @@ const mongoose = require('mongoose')
     }
 }
 
-module.exports = connect
+module.exports = connect */
