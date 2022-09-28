@@ -42,6 +42,13 @@ app.get('/deleteData', async (req, res) => {
     
 })
 
+app.get('/deleteReveal', async (req, res) => {
+    await Reveals.deleteMany()
+    .then(() => {
+        res.sendStatus(200)
+    })
+    
+})
 
 app.post('/postData', async (req, res) => {
     const ticker = req.body.ticker
