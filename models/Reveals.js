@@ -14,6 +14,9 @@ imageURL:{
 },
 attributes:{
     type: String
+},
+listedStatus:{
+    type: String
 }
 
 })
