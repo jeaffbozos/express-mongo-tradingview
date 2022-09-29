@@ -50,6 +50,7 @@ app.get('/deleteReveal', async (req, res) => {
     
 })
 
+
 app.post('/postData', async (req, res) => {
     const ticker = req.body.ticker
     const timeframe = req.body.timeframe
@@ -72,12 +73,14 @@ app.post('/revealData', async (req, res) => {
     const price = req.body.price
     const image = req.body.imageURL
     const attributes = req.body.attributes
+    const listed = req.body.listedStatus
 
     const reveal = new Reveals({
         "mint":mint,
         "price":price,
         "imageURL":image,
         "attributes":attributes,
+        "listedStatus":listed,
     })
     await reveal.save()
     res.sendStatus(200)
