@@ -7,6 +7,7 @@ const { promisify } = require('util')
 const connect_db = require('./connect_db')
 const Products = require('./models/Products')
 const Reveals = require('./models/Reveals')
+const axios = require('axios');
 
 const readFileAsync = promisify(fs.readFile)
 const writeFileAsync = promisify(fs.writeFile)
@@ -18,9 +19,34 @@ connect_db()
 
 app.set("view engine", "hbs");
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.sendStatus(200)
-})
+}) */
+
+app.get('/search/username=:username', async (req, res) => {
+    const username = req.params.username;
+    const bunniesUrl = `https://prod-api.kosetto.com/search/users?username=${username}`;
+
+    const headers = {
+        "accept": "application/json",
+        "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHhlMDE2ZmZmNTc3OGIyMTY2MmRhZjA5YzhjNTEzNjc4ZmY1Y2NmNjQxIiwiaWF0IjoxNjkyMTYzODMxLCJleHAiOjE2OTQ3NTU4MzF9.v5sA2sSt_omoVZKf5uAi-i_pWpQmIAEayazAbPHbIOM",
+        "content-type": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"116\", \"Not)A;Brand\";v=\"24\", \"Google Chrome\";v=\"116\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+    };
+
+    try {
+        const response = await axios.get(bunniesUrl, { headers });
+
+        // Forward the response from bunnies.com to the client
+        res.json(response.data);
+    } catch (error) {
+        // Handle any errors that occur during the request
+        res.status(500).json({ error: 'An error occurred while fetching data from bunnies.com' });
+    }
+});
+
 
 app.get('/getData', async (req, res) => {
     await Products.find()
